@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>3Dシューティングゲーム</title>
+    <style>
+        body { margin: 0; overflow: hidden; }
+    </style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+// シーン、カメラ、レンダラーの設定
+var scene = new THREE.Scene();
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// プレイヤー（宇宙船）の作成
+var geometry = new THREE.ConeGeometry(0.5, 1, 32);
+var material = new THREE.MeshBasicMaterial({ color: 0xffff00 });
+var player = new THREE.Mesh(geometry, material);
+scene.add(player);
+
+// 敵の作成
+var enemyGeometry = new THREE.BoxGeometry(1, 1, 1);
+var enemyMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+var enemies = [];
+
+function createEnemy() {
+    var enemy = new THREE.Mesh(enemyGeometry, enemyMaterial);
+    enemy.position.set((Math.random() - 0.5) * 20, (Math.random() - 0.5) * 20, -50);
+    enemies.push(enemy);
+    scene.add(enemy);
+}
+
+// ライトの追加
+var light = new THREE.AmbientLight(0x404040);
+scene.add(light);
+
+// カメラの位置
+camera.position.z = 5;
+
+// 弾の配列
+var bullets = [];
+
+// キー入力の管理
+var keys = {};
+document.addEventListener('keydown', function(event) {
+    keys[event.key] = true;
+});
+document.addEventListener('keyup', function(event) {
+    keys[event.key] = false;
+});
+
+// メインループ
+function animate() {
+    requestAnimationFrame(animate);
+
+    // プレイヤーの移動
+    if (keys['ArrowLeft']) player.position.x -= 0.1;
+    if (keys['ArrowRight']) player.position.x += 0.1;
+    if (keys['ArrowUp']) player.position.y += 0.1;
+    if (keys['ArrowDown']) player.position.y -= 0.1;
+}

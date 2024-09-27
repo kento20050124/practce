@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: '游ゴシック', 'Yu Gothic', sans-serif;
+    background-color: #fffaf0;
+}
+
+header {
+    background-color: #8fbc8f;
+    padding: 20px;
+    color: white;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    margin-top: 10px;
+}
+
+nav ul li {
+    margin-right: 15px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background-image: url('hero.jpg');
+    background-size: cover;
+    color: #fff;
+}
+
+.hero h2 {
+    font-size: 48px;
+}
+
+.hero p {
+    font-size: 24px;
+}
+
+.hero button {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.products {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+.products h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.product-list {
+    display: flex;
+    justify-content: center;
+}
+
+.product-item {
+    margin: 0 15px;
+}
+
+.product-item img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.product-item h3 {
+    font-size: 24px;
+    margin-top: 15px;
+}
+
+.product-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+footer {
+    background-color: #8fbc8f;
+    padding: 10px;
+    text-align: center;
+    color: white;
+}
